@@ -1,0 +1,279 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: black;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('images/background.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+#chart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+#rocket {
+    position: absolute;
+    width: 250px;
+    animation: fly 25s ease-in-out infinite;
+    z-index: 10;
+    transform-origin: center;
+}
+
+@keyframes fly {
+    0% {
+        transform: translate(-300px, 100vh) rotate(-15deg);
+    }
+    10% {
+        transform: translate(10vw, 70vh) rotate(5deg);
+    }
+    25% {
+        transform: translate(30vw, 40vh) rotate(-5deg);
+    }
+    45% {
+        transform: translate(60vw, 30vh) rotate(10deg);
+    }
+    60% {
+        transform: translate(90vw, 10vh) rotate(-5deg);
+    }
+    70% {
+        transform: translate(110vw, -100px) rotate(-30deg); /* Izleti van ekrana */
+        opacity: 1;
+    }
+    71% {
+        transform: translate(-300px, 100vh) rotate(-35deg); /* Teleport natrag */
+        opacity: 0; /* kratko nevidljiva dok “skače” nazad */
+    }
+    72% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0vw, 90vh) rotate(-10deg);
+    }
+}
+
+
+
+.pixel-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    color: #00ffea;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding: 12px 0;
+    z-index: 20;
+    border-top: 1px solid #00ffea;
+    box-shadow: 0 -2px 10px rgba(0,255,255,0.2);
+    backdrop-filter: blur(3px);
+}
+
+/* Stil za “SPACE-X” tekst da sja kao neon */
+.spacex {
+    color: #fff;
+    text-shadow: 0 0 6px #00ffff, 0 0 10px #00aaff, 0 0 20px #00ffff;
+}
+
+/* Efekat “flicker” kao stari monitor */
+.pixel-footer p {
+    animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        opacity: 0.6;
+    }
+}
+
+
+.x-link {
+    color: #00ffea;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.x-link:hover {
+    color: #fff;
+    text-shadow: 0 2 18px #00ffff, 0 0 25px #00aaff;
+}
+
+
+#stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    opacity: 0.8;
+    border-radius: 50%;
+    animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+
+.nav-console {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 0;
+    border-bottom: 1px solid #00ffff;
+    z-index: 20;
+    font-family: 'Press Start 2P', monospace;
+}
+
+.nav-console a {
+    color: #00ffea;
+    text-decoration: none;
+    font-size: 10px;
+    transition: 0.2s;
+}
+
+.nav-console a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+#launch {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Press Start 2P', monospace;
+    background: black;
+    color: #00ffea;
+    border: 2px solid #00ffff;
+    padding: 12px 20px;
+    cursor: pointer;
+    z-index: 30;
+    text-shadow: 0 0 8px #00ffff;
+    transition: 0.2s;
+}
+#launch:hover { background: #00ffff; color: black; }
+
+@keyframes launchNow {
+    0% { transform: translate(50vw, 80vh) scale(1) rotate(-10deg); opacity: 1; }
+    100% { transform: translate(50vw, -300px) scale(0.5) rotate(0deg); opacity: 0; }
+}
+
+#hodl-text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 28px;
+    color: #00ffea;
+    text-shadow: 0 0 8px #00ffff, 0 0 16px #00aaff;
+    animation: pulseHodl 2s infinite ease-in-out;
+    z-index: 15;
+}
+
+@keyframes pulseHodl {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+}
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 2px solid #00ffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: #00ffea;
+    z-index: 999;
+    text-shadow: 0 0 6px #00ffff, 0 0 15px #00aaff;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    color: #fff;
+    font-weight: bold;
+}
+
+.nav-center {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ca-label {
+    color: #00ffff;
+}
+
+.ca-value {
+    color: #fff;
+    background: rgba(0, 255, 255, 0.1);
+    padding: 4px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ca-value:hover {
+    background: rgba(0, 255, 255, 0.3);
+    text-shadow: 0 0 10px #00ffff;
+}
+
+.nav-right a {
+    color: #00ffea;
+    text-decoration: none;
+    margin-left: 15px;
+    transition: 0.2s;
+}
+
+.nav-right a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #00ffff;
+}
